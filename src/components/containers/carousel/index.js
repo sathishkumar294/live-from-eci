@@ -1,7 +1,11 @@
 import { Carousel } from 'antd';
-export function CarouselView({children}) {
+import './style.css';
+const dots = {
+    background: '#364d79',
+}
+export function CarouselView({ children }) {
 
-    return <Carousel autoplay>
+    return <Carousel autoplay dots={'dots'} >
         {children}
     </Carousel>
 }
