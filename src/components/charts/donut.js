@@ -1,23 +1,23 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import Parties from '../../config/parties.json';
 
+const donutContianer = {
+    width: '50vw',
+    height: '40vh'
+}
 
 export class Donut extends React.Component {
 
     render() {
-        const sampleData = {
-            labels: ['January', 'February', 'March',
-                'April', 'May'],
-            datasets: [
-                {
-                    label: 'Rainfall',
-                    backgroundColor: [
-                        '#B21F00',
-                        '#C9DE00',
-                        '#2FDE00',
-                        '#00A6B4',
-                        '#6800B4'
-                    ],
+        const {stateData, title} = this.props;
+
+        const parties = stateData.map(rec => rec.Party);
+        const keyedData = stateData.map(rec => ({[rec.Party]: {...rec}})).reduce((res, obj) => ({...res, ...obj}), {});
+        const datasets = ['Won', 'Leading', 'Total'].map(status => {
+                return                {
+                    label: status,
+                    backgroundColor: parties.map(party => Parties.find(p => p.party==party).color),
                     hoverBackgroundColor: [
                         '#501800',
                         '#4B5000',
@@ -25,12 +25,16 @@ export class Donut extends React.Component {
                         '#003350',
                         '#35014F'
                     ],
-                    data: [65, 59, 80, 81, 56]
+                    data: parties.map(party => keyedData[party][status])
                 }
-            ]
-        }
-        return <Doughnut
-            data={sampleData}
+            });
+        
+        return <div style={donutContianer}>
+         <Doughnut
+            data={{
+                labels: parties,
+                datasets
+            }}
             options={{
                 title: {
                     display: true,
@@ -42,6 +46,6 @@ export class Donut extends React.Component {
                     position: 'right'
                 }
             }}
-        />
+        /></div>
     }
 }

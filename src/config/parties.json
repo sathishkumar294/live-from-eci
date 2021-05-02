@@ -1,0 +1,47 @@
+[
+    {
+        "party": "All India Anna Dravida Munnetra Kazhagam",
+        "color":"#6929c4",
+        "symbolLink": ""
+    },
+    {
+        "party": "Bharatiya Janata Party",
+        "color":"#1192e8",
+        "symbolLink": ""
+    },
+    {
+        "party": "Communist Party of India",
+        "color":"#005d5d",
+        "symbolLink": ""
+    },
+    {
+        "party": "Communist Party of India  (Marxist)",
+        "color":"#9f1853",
+        "symbolLink": ""
+    },
+    {
+        "party": "Dravida Munnetra Kazhagam",
+        "color":"#fa4d56",
+        "symbolLink": ""
+    },
+    {
+        "party": "Indian National Congress",
+        "color":"#570408",
+        "symbolLink": ""
+    },
+    {
+        "party": "Makkal Needhi Maiam",
+        "color":"#198038",
+        "symbolLink": ""
+    },
+    {
+        "party": "Pattali Makkal Katchi",
+        "color":"#002d9c",
+        "symbolLink": ""
+    },
+    {
+        "party": "Viduthalai Chiruthaigal Katchi",
+        "color":"#ee538b",
+        "symbolLink": ""
+    }
+]

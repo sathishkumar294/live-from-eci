@@ -1,8 +1,9 @@
 {
     "statewise": {
         "url": "https://results.eci.gov.in/Result2021/partywiseresult-S22.htm?st=",
-        "s": {
-            "Tamil Nadu": "S22"
-        }
+        "states": [{
+            "name":"Tamil Nadu",
+            "code": "S22"
+        }]
     }
 }
