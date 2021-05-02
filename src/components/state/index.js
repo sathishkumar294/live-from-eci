@@ -8,7 +8,12 @@ import { Donut } from "../charts/donut";
 
 const stateStyles = {
     display: 'flex',
-    width: '90vw'
+    width: '90vw',
+    flexDirection: 'column'
+}
+
+const selectStyle = {
+    width: '100%'
 }
 const { Option } = Select;
 export function StateDetails({ state }) {
@@ -39,10 +44,11 @@ export function StateDetails({ state }) {
     }
 
     return <div style={stateStyles}>
-
-        <Select defaultValue={statuses[0]} style={{ width: 120 }} onChange={handleChange}>
-            {statuses.map((stat, i) => <Option key={i} value={stat}>{stat}</Option>)}
-        </Select>
+        <div style={selectStyle}>
+            <Select defaultValue={statuses[0]} style={{ width: 120 }} onChange={handleChange}>
+                {statuses.map((stat, i) => <Option key={i} value={stat}>{stat}</Option>)}
+            </Select>
+        </div>
         <Donut stateData={stateData} title={state.name} />
     </div>
 }

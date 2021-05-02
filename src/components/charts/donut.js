@@ -14,7 +14,7 @@ export class Donut extends React.Component {
         const { stateData, title } = this.props;
 
         const parties = stateData.map(rec => rec.party);
-        console.log({parties});
+        console.log({ parties });
         const keyedData = stateData.map(rec => ({ [rec.party]: rec.value })).reduce((res, obj) => ({ ...res, ...obj }), {});
         const colorPoints = generateLegendColors(parties.length)
         const datasets = [{
@@ -31,14 +31,18 @@ export class Donut extends React.Component {
                     datasets
                 }}
                 options={{
-                    title: {
-                        display: true,
-                        text: title,
-                        fontSize: 20
-                    },
-                    legend: {
-                        display: true,
-                        position: 'right'
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: title,
+                            font: { size: 20 },
+                            color: 'white'
+                        },
+                        legend: {
+                            display: true,
+                            position: 'right',
+                            labels: { color: '#ffffff' }
+                        }
                     }
                 }}
             /></div>

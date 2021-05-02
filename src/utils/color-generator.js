@@ -1,4 +1,4 @@
-import { interpolateInferno } from 'd3-scale-chromatic'
+import { interpolateRainbow } from 'd3-scale-chromatic'
 
 /* Must use an interpolated color scale, which has a range of [0, 1] */
 
@@ -8,7 +8,7 @@ const colorRangeInfo = {
     useEndAsStart: false
 }
 
-const colorScale = interpolateInferno;
+const colorScale = interpolateRainbow;
 
 
 export function generateLegendColors(dataLength) {
