@@ -3,8 +3,8 @@ import { Doughnut } from 'react-chartjs-2';
 import Parties from '../../config/parties.json';
 
 const donutContianer = {
-    width: '50vw',
-    height: '40vh'
+    width: '60vw',
+    height: '70vh'
 }
 
 export class Donut extends React.Component {

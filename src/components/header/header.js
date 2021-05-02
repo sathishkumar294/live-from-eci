@@ -21,7 +21,7 @@ export function AppHeader() {
                 <Menu.Item key="3">nav 3</Menu.Item>
             </Menu>
         </Header>
-        <Content style={{ padding: '0 50px', height: '100%' }}>
+        <Content style={{ padding: '0 50px', height: '80vh' }}>
             <StateWisePage/>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
