@@ -1,5 +1,4 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
-import { StateWisePage } from '../state-wise';
+import { Layout, Menu } from 'antd';
 const logo = {
 
     float: 'left',
@@ -11,9 +10,8 @@ const logo = {
     lineHeight: '31px'
 }
 export function AppHeader() {
-    const { Header, Content, Footer } = Layout;
-    return <Layout className="layout">
-        <Header>
+    const { Header } = Layout;
+    return         <Header>
             <div style={logo} >Live from ECI</div>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
                 <Menu.Item key="1">nav 1</Menu.Item>
@@ -21,9 +19,5 @@ export function AppHeader() {
                 <Menu.Item key="3">nav 3</Menu.Item>
             </Menu>
         </Header>
-        <Content style={{ padding: '0 50px', height: '80vh', background: "#364d79" }}>
-            <StateWisePage />
-        </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
-    </Layout>
+        
 }
