@@ -42,8 +42,6 @@ export class Donut extends React.Component {
                 autoRotate: false,
                 content: '{value}',
             },
-            showTitle: true,
-            title,
             statistic: {
                 title: { formatter: (state) => state && state.party ? state.party : title },
                 content: { formatter: (state) => state && state.value || totalCount }
@@ -51,7 +49,6 @@ export class Donut extends React.Component {
             interactions: [
                 { type: 'element-selected' },
                 { type: 'element-active' },
-                { type: 'pie-statistic-active' },
             ],
         };
         return <Pie {...config} />;
