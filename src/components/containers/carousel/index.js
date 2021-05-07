@@ -5,7 +5,7 @@ const dots = {
 }
 export function CarouselView({ children }) {
 
-    return <Carousel autoplay dots={'dots'} >
+    return <Carousel autoplay >
         {children}
     </Carousel>
 }

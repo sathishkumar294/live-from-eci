@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Layout className="layout">
         <AppHeader />
-        <Content style={{ padding: '0 50px', height: '80vh', background: "#364d79" }}>
+        <Content style={{ padding: '48px' }}>
           <StateWisePage />
         </Content>
         <Footer style={{ textAlign: 'center' }}>©2021 Sathishkumar Maruthamuthu</Footer>

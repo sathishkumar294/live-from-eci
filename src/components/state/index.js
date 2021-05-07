@@ -39,11 +39,7 @@ export function StateDetails({ state }) {
             setStateData(dataToShow);
         }), []);
 
-    const handleChange = (value) => {
-        setStatus(value);
-    }
+   
 
-    return <div style={stateStyles}>
-        <Donut stateData={stateData} title={state.name} />
-    </div>
+    return <Donut stateData={stateData} title={state.name} />
 }

@@ -1,0 +1,13 @@
+.dot-style {
+    background-color: brown;
+}
+
+.ant-carousel .slick-dots li button {
+    background: #647798;
+    opacity: 0.4;
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+    opacity: 1;
+    background: #647798;
+}

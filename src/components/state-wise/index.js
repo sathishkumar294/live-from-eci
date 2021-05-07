@@ -1,6 +1,8 @@
+import { Carousel } from 'antd';
 import { ECI_CONFIG } from '../../config/eci-config';
 import { CarouselView } from "../containers/carousel";
 import { StateDetails } from "../state";
+import './state-wise.css';
 
 const container = {
     height: '160px',
@@ -11,9 +13,8 @@ const container = {
 }
 
 export function StateWisePage() {
-    return <CarouselView>
+    return <Carousel autoplay dotPosition={'left'} dots={'dot-style'}>
         {ECI_CONFIG.statewise.states.map((state, i) =>
-            <div style={container} key={state.code} >
-                <StateDetails state={state}></StateDetails></div>)}
-    </CarouselView>
+            <StateDetails key={i} state={state}></StateDetails>)}
+    </Carousel>
 }

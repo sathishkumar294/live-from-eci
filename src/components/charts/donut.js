@@ -1,6 +1,5 @@
 import { Pie } from '@ant-design/charts';
 import React from 'react';
-import { generateLegendColors } from '../../utils/color-generator';
 const donutContianer = {
     width: '60vw',
     height: '70vh',
