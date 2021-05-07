@@ -20,7 +20,7 @@ export function StateDetails({ state }) {
 
     const [stateData, setStateData] = useState([]);
     const statuses = ['Won', 'Leading', "Total"];
-    const [status, setStatus] = useState(statuses[0]);
+    const [status, setStatus] = useState(statuses[2]);
     useEffect(() =>
         DataService.getHTMLData(ECI_CONFIG.statewise.url(state.code)).then(r => {
             // console.log(r);
@@ -44,11 +44,6 @@ export function StateDetails({ state }) {
     }
 
     return <div style={stateStyles}>
-        <div style={selectStyle}>
-            <Select defaultValue={statuses[0]} style={{ width: 120 }} onChange={handleChange}>
-                {statuses.map((stat, i) => <Option key={i} value={stat}>{stat}</Option>)}
-            </Select>
-        </div>
         <Donut stateData={stateData} title={state.name} />
     </div>
 }
