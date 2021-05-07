@@ -14,19 +14,20 @@ export class Donut extends React.Component {
 
         const parties = stateData.map(rec => rec.party);
         const chartData = stateData.map(rec => ({
-            type: rec.party,
-            value: parseInt(rec.value,10)
+            party: rec.party,
+            value: parseInt(rec.value, 10)
         }))
+        const totalCount = chartData.reduce((sum, { value }) => sum + value, 0);
         console.log({ chartData });
-        
+
 
         var config = {
             appendPadding: 10,
             data: chartData,
             angleField: 'value',
-            colorField: 'type',
+            colorField: 'party',
             radius: 1,
-            innerRadius: 0.64,
+            innerRadius: 0.5,
             meta: {
                 value: {
                     formatter: function formatter(v) {
@@ -40,6 +41,12 @@ export class Donut extends React.Component {
                 style: { textAlign: 'center' },
                 autoRotate: false,
                 content: '{value}',
+            },
+            showTitle: true,
+            title,
+            statistic: {
+                title: { formatter: (state) => state && state.party ? state.party : title },
+                content: { formatter: (state) => state && state.value || totalCount }
             },
             interactions: [
                 { type: 'element-selected' },
