@@ -1,5 +1,5 @@
+import { Pie } from '@ant-design/charts';
 import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
 import { generateLegendColors } from '../../utils/color-generator';
 const donutContianer = {
     width: '60vw',
@@ -14,37 +14,41 @@ export class Donut extends React.Component {
         const { stateData, title } = this.props;
 
         const parties = stateData.map(rec => rec.party);
-        console.log({ parties });
-        const keyedData = stateData.map(rec => ({ [rec.party]: rec.value })).reduce((res, obj) => ({ ...res, ...obj }), {});
-        const colorPoints = generateLegendColors(parties.length)
-        const datasets = [{
-            label: 'TODO',
-            backgroundColor: colorPoints,
-            data: parties.map(party => keyedData[party]),
-            hoverOffset: 4
-        }]
+        const chartData = stateData.map(rec => ({
+            type: rec.party,
+            value: parseInt(rec.value,10)
+        }))
+        console.log({ chartData });
+        
 
-        return <div style={donutContianer}>
-            <Doughnut
-                data={{
-                    labels: parties,
-                    datasets
-                }}
-                options={{
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: title,
-                            font: { size: 20 },
-                            color: 'white'
-                        },
-                        legend: {
-                            display: true,
-                            position: 'right',
-                            labels: { color: '#ffffff' }
-                        }
-                    }
-                }}
-            /></div>
+        var config = {
+            appendPadding: 10,
+            data: chartData,
+            angleField: 'value',
+            colorField: 'type',
+            radius: 1,
+            innerRadius: 0.64,
+            meta: {
+                value: {
+                    formatter: function formatter(v) {
+                        return v;
+                    },
+                },
+            },
+            label: {
+                type: 'inner',
+                offset: '-50%',
+                style: { textAlign: 'center' },
+                autoRotate: false,
+                content: '{value}',
+            },
+            interactions: [
+                { type: 'element-selected' },
+                { type: 'element-active' },
+                { type: 'pie-statistic-active' },
+            ],
+        };
+        return <Pie {...config} />;
+
     }
 }
