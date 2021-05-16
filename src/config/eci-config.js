@@ -12,6 +12,12 @@ export const ECI_CONFIG =
         }, {
             "name": "Kerala",
             "code": "S11"
+        }, {
+            name: 'West Bengal',
+            code: 'S25'
+        }, {
+            name: 'Puthucherry',
+            code: 'U07'
         }]
     }
 }
