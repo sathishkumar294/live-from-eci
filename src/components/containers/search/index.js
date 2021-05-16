@@ -2,6 +2,10 @@ import { Col, List, Row } from "antd";
 import Search from "antd/lib/input/Search";
 import { useEffect, useState } from "react";
 
+const listItem = {
+  cursor: "pointer",
+};
+
 /**
  *
  * @param {{
@@ -64,6 +68,11 @@ export function SearchContainer({ states, candidates, constituencies }) {
     return `${noOfCandidates} candidates, ${state.state}`;
   };
 
+  const goToStatePage = (state) => {
+    // TODO:
+    console.log("Go to state page");
+  };
+
   /**
    * @param {Candidate} candidate
    */
@@ -95,7 +104,7 @@ export function SearchContainer({ states, candidates, constituencies }) {
             itemLayout={"horizontal"}
             dataSource={result.states.slice(0, 5)}
             renderItem={(state) => (
-              <List.Item>
+              <List.Item onClick={() => goToStatePage(state)} style={listItem}>
                 <List.Item.Meta
                   description={getStateDescription(state)}
                   title={state.state}
