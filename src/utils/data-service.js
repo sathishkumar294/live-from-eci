@@ -8,10 +8,15 @@ export const DataService = {
       headers: {
         "Target-URL": url,
       },
-    }).then((r) => {
-      loader();
-      return r.text();
-    });
+    })
+      .then((r) => {
+        loader();
+        return r.text();
+      })
+      .catch((e) => {
+        const warner = message.warn("Unable to load state data");
+        setTimeout(warner, 4000);
+      });
   },
 
   /**
