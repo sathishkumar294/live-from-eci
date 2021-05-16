@@ -1,4 +1,4 @@
-import { Layout, Menu } from "antd";
+import { Menu } from "antd";
 const logo = {
   float: "left",
   width: "120px",
@@ -9,13 +9,12 @@ const logo = {
   lineHeight: "31px",
 };
 export function AppHeader({ page, setPage }) {
-  const { Header } = Layout;
   return (
-    <Header>
+    <>
       <div style={logo}>Live from ECI</div>
       <Menu
         theme="dark"
-        mode="horizontal"
+        mode="inline"
         defaultSelectedKeys={[page]}
         onClick={(item) => setPage(item.key)}
       >
@@ -24,6 +23,6 @@ export function AppHeader({ page, setPage }) {
         <Menu.Item key="3">Favorites</Menu.Item>
         <Menu.Item key="4">Search</Menu.Item>
       </Menu>
-    </Header>
+    </>
   );
 }

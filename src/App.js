@@ -9,7 +9,7 @@ import { StateWisePage } from "./components/state-wise";
 import { DataService } from "./utils/data-service";
 
 function App() {
-  const { Content, Footer } = Layout;
+  const { Content, Footer, Sider } = Layout;
   const [page, setPage] = useState("1");
 
   /**
@@ -39,22 +39,41 @@ function App() {
 
   return (
     <div className="App">
-      <Layout className="layout">
-        <AppHeader {...{ page, setPage }} />
-        <Content key={page} style={{ padding: "48px" }}>
-          {page === "1" ? (
-            <StateWisePage {...{ states }} />
-          ) : page === "2" ? (
-            <MapView />
-          ) : page === "4" ? (
-            <SearchContainer {...{ states, candidates, constituencies }} />
-          ) : (
-            <div />
-          )}
-        </Content>
-        <Footer style={{ textAlign: "center" }}>
-          ©2021 Sathishkumar Maruthamuthu
-        </Footer>
+      <Layout>
+        <Sider
+          breakpoint="lg"
+          collapsedWidth="0"
+          onBreakpoint={(broken) => {
+            console.log(broken);
+          }}
+          onCollapse={(collapsed, type) => {
+            console.log(collapsed, type);
+          }}
+        >
+          <AppHeader {...{ page, setPage }} />
+        </Sider>
+         
+        <Layout className="layout">
+          <Content key={page} style={{ margin: "24px 16px 0" }}>
+            <div
+              className="site-layout-background"
+              style={{ padding: 24, minHeight: 360 }}
+            >
+              {page === "1" ? (
+                <StateWisePage {...{ states }} />
+              ) : page === "2" ? (
+                <MapView />
+              ) : page === "4" ? (
+                <SearchContainer {...{ states, candidates, constituencies }} />
+              ) : (
+                <div />
+              )}
+            </div>
+          </Content>
+          <Footer style={{ textAlign: "center" }}>
+            ©2021 Sathishkumar Maruthamuthu
+          </Footer>
+        </Layout>
       </Layout>
     </div>
   );
