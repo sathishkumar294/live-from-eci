@@ -1,11 +1,18 @@
-import { Carousel } from 'antd';
-import { ECI_CONFIG } from '../../config/eci-config';
+import { Carousel } from "antd";
 import { StateDetails } from "../state";
-import './state-wise.css';
+import "./state-wise.css";
 
-export function StateWisePage() {
-    return <Carousel autoplay dotPosition={'left'} dots={'dot-style'}>
-        {ECI_CONFIG.statewise.states.map((state, i) =>
-            <StateDetails key={i} state={state}></StateDetails>)}
+/**
+ *
+ * @param {{states: State[]}} param0
+ * @returns
+ */
+export function StateWisePage({ states }) {
+  return (
+    <Carousel autoplay dotPosition={"left"} dots={"dot-style"}>
+      {states.map((state, i) => (
+        <StateDetails key={i} state={state}></StateDetails>
+      ))}
     </Carousel>
+  );
 }
