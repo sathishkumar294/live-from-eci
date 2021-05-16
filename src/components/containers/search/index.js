@@ -80,8 +80,8 @@ export function SearchContainer({ states, candidates, constituencies }) {
 
   return (
     <>
-      <Row>
-        <Col xs={8} offset={8}>
+      <Row justify="center">
+        <Col xs={24} md={8}>
           <Search
             placeholder="input search text"
             onSearch={setQuery}
@@ -90,7 +90,7 @@ export function SearchContainer({ states, candidates, constituencies }) {
         </Col>
       </Row>
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col xs={8}>
+        <Col xs={24} md={8}>
           <List
             itemLayout={"horizontal"}
             dataSource={result.states.slice(0, 5)}
@@ -104,7 +104,7 @@ export function SearchContainer({ states, candidates, constituencies }) {
             )}
           ></List>
         </Col>
-        <Col xs={8}>
+        <Col xs={24} md={8}>
           <List
             itemLayout={"horizontal"}
             dataSource={result.constituencies.slice(0, 5)}
@@ -118,7 +118,7 @@ export function SearchContainer({ states, candidates, constituencies }) {
             )}
           ></List>
         </Col>
-        <Col xs={8}>
+        <Col xs={24} md={8}>
           <List
             itemLayout={"horizontal"}
             dataSource={result.candidates.slice(0, 5)}
