@@ -1,4 +1,4 @@
-import { Col, List, Row } from "antd";
+import { Button, Col, List, Row } from "antd";
 import Search from "antd/lib/input/Search";
 import { useEffect, useState } from "react";
 
@@ -21,9 +21,12 @@ export function SearchContainer({ states, candidates, constituencies }) {
     candidates: [],
   });
 
+  const [noOfResultsToShow, setNoOfResultsToShow] = useState(3);
+
   const [query, setQuery] = useState("");
 
   useEffect(() => {
+    setNoOfResultsToShow(5);
     if (query) {
       const searchFor = query.toLowerCase().trim();
       setResults({
@@ -113,6 +116,27 @@ export function SearchContainer({ states, candidates, constituencies }) {
     return `${candidate.party}`;
   };
 
+  const onLoadMore = () => {
+    setNoOfResultsToShow(noOfResultsToShow + 5);
+
+    // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
+    // In real scene, you can using public method of react-virtualized:
+    // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
+    window.dispatchEvent(new Event("resize"));
+  };
+
+  const loadMore = (
+    <div
+      style={{
+        textAlign: "center",
+        marginTop: 12,
+        height: 32,
+        lineHeight: "32px",
+      }}
+    >
+      <Button onClick={onLoadMore}>Load More</Button>
+    </div>
+  );
   return (
     <>
       <Row justify="center">
@@ -128,7 +152,7 @@ export function SearchContainer({ states, candidates, constituencies }) {
         <Col xs={24} md={8}>
           <List
             itemLayout={"horizontal"}
-            dataSource={result.states.slice(0, 5)}
+            dataSource={result.states.slice(0, noOfResultsToShow)}
             renderItem={(state) => (
               <List.Item onClick={() => goToStatePage(state)} style={listItem}>
                 <List.Item.Meta
@@ -142,7 +166,7 @@ export function SearchContainer({ states, candidates, constituencies }) {
         <Col xs={24} md={8}>
           <List
             itemLayout={"horizontal"}
-            dataSource={result.constituencies.slice(0, 5)}
+            dataSource={result.constituencies.slice(0, noOfResultsToShow)}
             renderItem={(constituency) => (
               <List.Item>
                 <List.Item.Meta
@@ -156,7 +180,7 @@ export function SearchContainer({ states, candidates, constituencies }) {
         <Col xs={24} md={8}>
           <List
             itemLayout={"horizontal"}
-            dataSource={result.candidates.slice(0, 5)}
+            dataSource={result.candidates.slice(0, noOfResultsToShow)}
             renderItem={(candidate) => (
               <List.Item>
                 <List.Item.Meta
@@ -166,6 +190,11 @@ export function SearchContainer({ states, candidates, constituencies }) {
               </List.Item>
             )}
           ></List>
+        </Col>
+      </Row>
+      <Row justify="center">
+        <Col xs={12} md={6}>
+          {loadMore} 
         </Col>
       </Row>
     </>
