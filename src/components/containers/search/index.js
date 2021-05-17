@@ -102,7 +102,9 @@ export function SearchContainer({ states, candidates, constituencies }) {
    */
   const getCandidateDescription = (candidate) => {
     const constituency = constituencies.find(
-      (c) => c.code === candidate.constituencyCode
+      (c) =>
+        c.code === candidate.constituencyCode &&
+        c.stateCode === candidate.stateCode
     );
     if (constituency) {
       return `${candidate.party} contesting from ${constituency.constituency}`;
