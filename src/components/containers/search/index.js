@@ -25,12 +25,36 @@ export function SearchContainer({ states, candidates, constituencies }) {
 
   useEffect(() => {
     if (query) {
+      const searchFor = query.toLowerCase().trim();
       setResults({
-        states: states.filter((s) => s.state.includes(query)),
-        candidates: candidates.filter((c) => c.candidate.includes(query)),
-        constituencies: constituencies.filter((c) =>
-          c.constituency.includes(query)
-        ),
+        states: [
+          ...states.filter((s) => s.state.toLowerCase().startsWith(searchFor)),
+          ...states.filter(
+            (s) =>
+              !s.state.toLowerCase().startsWith(searchFor) &&
+              s.state.toLowerCase().includes(searchFor)
+          ),
+        ],
+        candidates: [
+          ...candidates.filter((c) =>
+            c.candidate.toLowerCase().startsWith(searchFor)
+          ),
+          ...candidates.filter(
+            (c) =>
+              !c.candidate.toLowerCase().startsWith(searchFor) &&
+              c.candidate.toLowerCase().includes(searchFor)
+          ),
+        ],
+        constituencies: [
+          ...constituencies.filter((c) =>
+            c.constituency.toLowerCase().startsWith(searchFor)
+          ),
+          ...constituencies.filter(
+            (c) =>
+              !c.constituency.toLowerCase().startsWith(searchFor) &&
+              c.constituency.toLowerCase().includes(searchFor)
+          ),
+        ],
       });
     } else {
       setResults({
